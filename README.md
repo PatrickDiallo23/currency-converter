@@ -1,17 +1,9 @@
-# project1flutter
+# Currency Convertor
 
-A new Flutter project.
+This app allows you to convert a certain amount of money from EUR to RON and vice versa:
 
-## Getting Started
+![Simulator Screen Recording - iPhone 13 - 2021-11-08 at 01 31 04](https://user-images.githubusercontent.com/88280202/140699176-dd6f946f-6acc-4915-9723-7dc9d36a36f9.gif)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# flutter-project1
