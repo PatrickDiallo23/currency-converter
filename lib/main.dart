@@ -1,11 +1,10 @@
-import 'dart:async';
-
-import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
 double roundDouble(double value, int place) {
-  num mod = pow(10.0, place);
-  return ((value * mod).round().toDouble() / mod);
+  final num mod = pow(10.0, place);
+  return (value * mod).round().toDouble() / mod;
 }
 
 void main() {
@@ -17,7 +16,7 @@ class FlutterApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: HomePage(),
     );
   }
@@ -36,7 +35,7 @@ class _HomePageState extends State<HomePage> {
   String? errorText;
   double doubleAmount = 0;
   String stringAmount = '0';
-  bool pressed = true;
+  bool pressed = false;
   bool isOk = true;
   String hintText = 'Enter the amount in EUR';
   String prefixText = '€ ';
@@ -47,8 +46,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text("Currency convertor"),
-        backgroundColor: Color(0xFF4CAF50),
+        title: const Text('Currency convertor'),
+        backgroundColor: const Color(0xFF4CAF50),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,12 +55,11 @@ class _HomePageState extends State<HomePage> {
           Image.network(
             'https://www.crestwood.com/wp-content/uploads/2020/04/Global-Currency1100px-1024x682.jpeg',
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Container(
             margin: const EdgeInsetsDirectional.all(15.0),
             child: TextField(
-              textAlign: TextAlign.start,
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
               controller: controller,
               onChanged: (String? value) {
                 final double? doubleValue = double.tryParse(value!);
@@ -98,28 +96,28 @@ class _HomePageState extends State<HomePage> {
               },
               decoration: InputDecoration(
                 errorBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.green, width: 2.5),
+                  borderSide: const BorderSide(color: Colors.green, width: 2.5),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 focusedErrorBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.green, width: 2.5),
+                  borderSide: const BorderSide(color: Colors.green, width: 2.5),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 errorText: errorText,
                 hintText: hintText,
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.green, width: 2.5),
+                  borderSide: const BorderSide(color: Colors.green, width: 2.5),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.green, width: 2.5),
+                  borderSide: const BorderSide(color: Colors.green, width: 2.5),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 isDense: true,
-                contentPadding: EdgeInsets.all(4.0),
+                contentPadding: const EdgeInsets.all(4.0),
                 suffix: IconButton(
                   iconSize: 20.0,
-                  icon: Icon(Icons.close),
+                  icon: const Icon(Icons.close),
                   onPressed: () {
                     controller.clear();
                     setState(() {
@@ -139,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                   primary: Colors.green,
                   fixedSize: const Size(120, 40),
                 ),
-                child: Text(
+                child: const Text(
                   'Convert 🔄',
                   style: TextStyle(fontSize: 16),
                 ),
@@ -150,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     doubleAmount = double.parse(controller.value.text);
                   }
-                  if (pressed) {
+                  if (!pressed) {
                     setState(() {
                       prefixText = 'RON ';
                       currency = ' €';
@@ -181,11 +179,11 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Text(
             stringAmount + currency,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
           ),
         ],
       ),
