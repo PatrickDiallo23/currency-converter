@@ -50,7 +50,6 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: const Color(0xFF4CAF50),
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Image.network(
             'https://www.crestwood.com/wp-content/uploads/2020/04/Global-Currency1100px-1024x682.jpeg',
@@ -130,53 +129,51 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          Container(
-            child: Center(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.green,
-                  fixedSize: const Size(120, 40),
-                ),
-                child: const Text(
-                  'Convert 🔄',
-                  style: TextStyle(fontSize: 16),
-                ),
-                onPressed: () {
-                  final double? checker = double.tryParse(controller.text);
-                  if (checker == null) {
-                    doubleAmount = 0;
-                  } else {
-                    doubleAmount = double.parse(controller.value.text);
-                  }
-                  if (!pressed) {
-                    setState(() {
-                      prefixText = 'RON ';
-                      currency = ' €';
-                      hintText = 'Enter the amount in RON';
-
-                      doubleAmount = roundDouble(doubleAmount / 4.95, 2);
-
-                      stringAmount = doubleAmount.toString();
-
-                      pressed = !pressed;
-                    });
-                  } else {
-                    setState(() {
-                      prefixText = '€ ';
-                      hintText = 'Enter the amount in EUR';
-                      currency = ' RON';
-
-                      doubleAmount = roundDouble(doubleAmount * 4.95, 2);
-
-                      stringAmount = (doubleAmount).toString();
-
-                      pressed = !pressed;
-                    });
-                  }
-
-                  FocusScope.of(context).requestFocus(FocusNode());
-                },
+          Center(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                fixedSize: const Size(120, 40),
               ),
+              child: const Text(
+                'Convert 🔄',
+                style: TextStyle(fontSize: 16),
+              ),
+              onPressed: () {
+                final double? checker = double.tryParse(controller.text);
+                if (checker == null) {
+                  doubleAmount = 0;
+                } else {
+                  doubleAmount = double.parse(controller.value.text);
+                }
+                if (!pressed) {
+                  setState(() {
+                    prefixText = 'RON ';
+                    currency = ' €';
+                    hintText = 'Enter the amount in RON';
+
+                    doubleAmount = roundDouble(doubleAmount / 4.95, 2);
+
+                    stringAmount = doubleAmount.toString();
+
+                    pressed = !pressed;
+                  });
+                } else {
+                  setState(() {
+                    prefixText = '€ ';
+                    hintText = 'Enter the amount in EUR';
+                    currency = ' RON';
+
+                    doubleAmount = roundDouble(doubleAmount * 4.95, 2);
+
+                    stringAmount = (doubleAmount).toString();
+
+                    pressed = !pressed;
+                  });
+                }
+
+                FocusScope.of(context).requestFocus(FocusNode());
+              },
             ),
           ),
           const SizedBox(height: 5),
