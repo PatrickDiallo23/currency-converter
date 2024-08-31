@@ -1,16 +1,24 @@
 name: Check the quality of my code
 on:
   push:
+    paths:
+      - '**/*.dart'
+      - '**/pubspec.yaml'
+      - '**/lib/**'
 
 jobs:
   quality_check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v1
+      - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+      - name: Check Flutter version
+        run: flutter --version
+      - name: Install dependencies
+        run: flutter pub get
       - name: Run format
-        run: flutter format -l 120 --set-exit-if-changed .
+        run: dart format -l 120 --set-exit-if-changed .
       - name: Run analysis
         run: flutter analyze
